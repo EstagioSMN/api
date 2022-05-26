@@ -1,0 +1,15 @@
+global using Microsoft.AspNetCore.Mvc;
+global using Krita.Shared.Interfaces;
+global using Krita.Data.Repositories;
+global using Krita.Configurations;
+global using Krita.Shared.Models;
+global using Krita.Data;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using System.Text;
+global using Krita;
+global using Microsoft.IdentityModel.Tokens;
+global using Krita.Shared.Dto;
+global using Krita.Shared.Dto.Usuario;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Security.Cryptography;

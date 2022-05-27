@@ -96,7 +96,7 @@ namespace Krita.Data.Repositories
 		{
 			SetProcedure(Procedures.KRTSP_TrocarSenha);
 
-			AddParameter("idUsuario", esqueciSenha.Id);
+			AddParameter("email", esqueciSenha.Email);
 			AddParameter("novaSenha", esqueciSenha.Senha);
 
 			return ExecuteNonQuery();

@@ -11,7 +11,7 @@ namespace Krita.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult login(LoginDto login)
+        public IActionResult login([FromBody] LoginDto login)
         {
             var usuario = _usuarioRepository.BuscarPorEmail(login.Email);
 
@@ -30,19 +30,19 @@ namespace Krita.Controllers
             }
 
             var token = TokenService.GenerateToken(usuario);
-            return Ok(token);
+            return Ok(new {
+                token = token
+            });
         }
 
-        [HttpPost("{id}/esqueci-senha")]
-        public IActionResult EsqueciSenha(int id, [FromBody] EsqueciSenhaDto novoUsuario)
+        [HttpPost("esqueci-senha")]
+        public IActionResult EsqueciSenha([FromBody] EsqueciSenhaDto novoUsuario)
         {
-            var usuario = new EsqueciSenhaDto()
-            {
-                Id = id,
-                Senha = novoUsuario.Senha.Criptografar()
-            };
+            Console.WriteLine(novoUsuario.Email);
+            Console.WriteLine(novoUsuario.Senha);
+            novoUsuario.Senha = novoUsuario.Senha.Criptografar();
 
-            var resultadoAlteracao = _usuarioRepository.AlterarSenha(usuario);
+            var resultadoAlteracao = _usuarioRepository.AlterarSenha(novoUsuario);
             if (resultadoAlteracao == 0)
                 return BadRequest("Erro ao atualizar Senha");
 
@@ -53,7 +53,7 @@ namespace Krita.Controllers
         public IActionResult TrocarSenha([FromBody] TrocarSenhaDto trocarSenhaDto)
         {
             var usuario = _usuarioRepository.BuscarPorEmail(trocarSenhaDto.Email);
-
+            
             if (usuario == null) {
                 return BadRequest("Email não existe");
             }

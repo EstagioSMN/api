@@ -6,8 +6,6 @@ global using System.Data;
 global using System.Text;
 global using Microsoft.IdentityModel.Tokens;
 global using Krita;
-global using Krita.Shared.Dto;
-global using Krita.Shared.Dto.Usuario;
 global using Microsoft.EntityFrameworkCore;
 
 

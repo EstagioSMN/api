@@ -10,9 +10,7 @@ namespace Krita.Configurations
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, usuario.Id.ToString()),
-                    new Claim(ClaimTypes.Name, usuario.Email),
-                    new Claim(ClaimTypes.Name, usuario.Apelido)
+                    new Claim(ClaimTypes.Name, usuario.Id.ToString())
                 }),
 
                 Expires = DateTime.UtcNow.AddHours(2),

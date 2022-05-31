@@ -17,7 +17,7 @@ namespace Krita.Data.Repositories
             Bloqueado = 0,
         	NaoBloqueado = 1
         }
-        public int Desbloquear(int id, int idUsuarioUltimaAlteracao)
+         public int Desbloquear(int id, int idUsuarioUltimaAlteracao)
         {
             SetProcedure(Procedures.KRTSP_BloquearUsuario);
 
